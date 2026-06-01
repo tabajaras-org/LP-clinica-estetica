@@ -180,15 +180,20 @@ function Eyebrow({ children, inverse = false }: { children: string; inverse?: bo
   );
 }
 
-function PhotoPlaceholder({ label, className = '' }: { label: string; className?: string }) {
+function MaisonImage({
+  src,
+  alt,
+  className = '',
+  loading = 'lazy',
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  loading?: 'eager' | 'lazy';
+}) {
   return (
-    <div className={`reveal relative overflow-hidden rounded-[34px] bg-[#d7c4b4] shadow-maison lg:rounded-[46px] ${className}`}>
-      <div className="absolute -right-20 -top-24 h-72 w-72 rounded-full bg-[#f4e6d6aa]" />
-      <div className="absolute bottom-0 left-0 h-[34%] w-full bg-[#b89562aa]" />
-      <div className="absolute inset-x-8 top-10 h-[55%] rounded-b-[42%] rounded-t-full bg-gradient-to-b from-[#eadfd2] to-[#bca48d]" />
-      <span className="absolute bottom-7 left-7 font-caption text-[10px] font-bold uppercase tracking-[0.18em] text-maison-soft">
-        {label}
-      </span>
+    <div className={`reveal relative overflow-hidden rounded-[34px] bg-maison-nude shadow-maison lg:rounded-[46px] ${className}`}>
+      <img className="h-full w-full object-cover" src={src} alt={alt} loading={loading} decoding="async" />
     </div>
   );
 }
@@ -341,7 +346,12 @@ function Hero() {
           </div>
         </div>
         <div className="relative">
-          <PhotoPlaceholder label="Foto premium 4:5" className="h-[428px] w-full sm:h-[620px] lg:h-[742px]" />
+          <MaisonImage
+            src="/assets/clinica-hero-premium.png"
+            alt="Paciente em uma sala premium de clinica estetica"
+            className="h-[428px] w-full sm:h-[620px] lg:h-[742px]"
+            loading="eager"
+          />
           <div className="reveal absolute -left-10 bottom-20 hidden w-[252px] rounded-[26px] border border-white/80 bg-white/70 p-5 shadow-glass backdrop-blur lg:block">
             <div className="mb-2 flex items-center gap-2 font-caption text-[11px] font-bold uppercase text-maison-gold">
               <Sparkles className="h-4 w-4" /> Naturalidade
@@ -436,7 +446,11 @@ function Specialist() {
   return (
     <section id="especialista" className="bg-maison-ink py-20 text-maison-soft lg:py-24">
       <div className="mx-auto grid max-w-[1296px] gap-12 px-6 lg:grid-cols-[520px_1fr] lg:px-0">
-        <PhotoPlaceholder label="Foto profissional 4:5" className="h-[428px] lg:h-[650px]" />
+        <MaisonImage
+          src="/assets/clinica-especialista.png"
+          alt="Especialista em estetica avancada em consultorio sofisticado"
+          className="h-[428px] lg:h-[650px]"
+        />
         <div className="reveal flex flex-col justify-center">
           <Eyebrow inverse>Especialista</Eyebrow>
           <h2 className="mt-5 max-w-[620px] font-heading text-[38px] font-semibold leading-none lg:text-[62px]">
@@ -482,11 +496,15 @@ function Experience() {
             ))}
           </div>
         </div>
-        <div className="reveal relative min-h-[315px] overflow-hidden rounded-[30px] bg-[#d8cab8] shadow-maison">
-          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-[#bfa17588]" />
-          <span className="absolute bottom-8 left-8 font-caption text-[10px] font-bold uppercase tracking-[0.18em] text-maison-soft">
-            Ambiente 16:9
-          </span>
+        <div className="reveal relative min-h-[315px] overflow-hidden rounded-[30px] bg-maison-nude shadow-maison">
+          <img
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/assets/clinica-ambiente.png"
+            alt="Ambiente reservado de clinica estetica boutique"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-maison-ink/20 via-transparent to-transparent" />
         </div>
       </div>
     </section>
