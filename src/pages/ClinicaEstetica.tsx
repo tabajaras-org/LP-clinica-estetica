@@ -208,12 +208,21 @@ function AuthorityPill({ icon: Icon, label }: { icon: typeof Award; label: strin
 }
 
 function BeforeAfter({ compact = false }: { compact?: boolean }) {
+  const src = compact ? '/assets/clinica-resultado-compacto.png' : '/assets/clinica-resultado-principal.png';
+
   return (
     <div className={`reveal relative overflow-hidden rounded-[30px] bg-maison-nude shadow-maison ${compact ? 'h-[430px]' : 'h-[492px]'}`}>
-      <div className="absolute inset-y-0 left-0 flex w-1/2 items-end bg-[#d4bda8] p-7">
+      <img
+        className="absolute inset-0 h-full w-full object-cover"
+        src={src}
+        alt="Comparativo de transformacao facial discreta antes e depois"
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="absolute inset-y-0 left-0 flex w-1/2 items-end bg-gradient-to-t from-maison-ink/38 via-transparent to-transparent p-7">
         <span className="font-caption text-[10px] font-bold uppercase tracking-[0.2em] text-maison-soft">Antes</span>
       </div>
-      <div className="absolute inset-y-0 right-0 flex w-1/2 items-end justify-end bg-[#bfa175] p-7">
+      <div className="absolute inset-y-0 right-0 flex w-1/2 items-end justify-end bg-gradient-to-t from-maison-ink/38 via-transparent to-transparent p-7">
         <span className="font-caption text-[10px] font-bold uppercase tracking-[0.2em] text-maison-soft">Depois</span>
       </div>
       <div className="absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2 bg-maison-soft" />
